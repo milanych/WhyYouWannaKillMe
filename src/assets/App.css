@@ -583,7 +583,7 @@ h1, h3, p {
   margin: 2rem 0
 }
 
-.heroCard {
+.heroCard, .fighter-selection {
   display: flex;
   justify-content: space-around;
   align-items: center;

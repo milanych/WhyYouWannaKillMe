@@ -67,7 +67,7 @@ function Fight() {
     <>
       <h1>Choose two fighters</h1>
       <div className="fighter-selection">
-        <div className="column">
+        <div className="col">
           <h2>Hero 1</h2>
           <form onSubmit={fetchHeroes1}>
             <input
@@ -92,7 +92,7 @@ function Fight() {
             )): "no heroes found!"}
           </div>
         </div>
-        <div className="column">
+        <div className="col">
           <h2>Hero 2</h2>
           <form onSubmit={fetchHeroes2}>
             <input
