@@ -1,0 +1,5 @@
+export {default as HomePage} from './HomePage'
+export {default as HeroesList} from './HeroesList'
+export {default as HeroPage} from './HeroPage'
+export {default as FightPage} from './FightPage'
+export {default as PageNotFound} from './PageNotFound'

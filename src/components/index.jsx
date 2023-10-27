@@ -1,0 +1,5 @@
+export {default as Header} from './Header/Header'
+export {default as Footer} from './Footer/Footer'
+export {default as HeroesList} from './HeroesList/HeroesList'
+export {default as HeroCard} from './HeroCard/HeroCard'
+export {default as Fight} from './Fight/Fight'
