@@ -551,7 +551,7 @@ form>button {
   width: 760px;
 }
 
-h1, h3, p {
+h1, h2, h3, p {
   margin-bottom: 1rem;
 }
 
@@ -608,8 +608,8 @@ h1, h3, p {
 }
 
 .heroLink img {
-  width: 110px;
-  height: 200px;
+  width: 80px;
+  height: 160px;
   object-fit: cover;
   margin-bottom: .5rem;
 }
@@ -622,4 +622,13 @@ h1, h3, p {
 
 .selected {
   opacity: .5;
+}
+
+.col {
+  width: 45%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }

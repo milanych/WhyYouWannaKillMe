@@ -1,41 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Fighter from "../Fighter/Fighter";
+import fightImg from "../../assets/img/fight.png"
 
 function Fight() {
-  const [heroName1, setHeroName1] = useState('');
-  const [heroName2, setHeroName2] = useState('');
-  const [heroes1, setHeroes1] = useState([]);
-  const [heroes2, setHeroes2] = useState([]);
   const [selectedHero1, setSelectedHero1] = useState(null);
   const [selectedHero2, setSelectedHero2] = useState(null);
-  const [isLoading1, setIsLoading1] = useState(false);
-  const [isLoading2, setIsLoading2] = useState(false);
   const [winner, setWinner] = useState('');
-
-  const fetchHeroes1 = async (e) => {
-    e.preventDefault()
-    setIsLoading1(true);
-    const resp = await fetch(`https://www.superheroapi.com/api.php/6735566433239595/search/${heroName1}`);
-    const data = await resp.json();
-    setHeroes1(data.results);
-    setIsLoading1(false);
-  };
-
-  const fetchHeroes2 = async (e) => {
-    e.preventDefault()
-    setIsLoading2(true);
-    const resp = await fetch(`https://www.superheroapi.com/api.php/6735566433239595/search/${heroName2}`);
-    const data = await resp.json();
-    setHeroes2(data.results);
-    setIsLoading2(false);
-  };
-
-  const handleHero1Click = (hero) => {
-    setSelectedHero1(hero);
-  };
-  const handleHero2Click = (hero) => {
-    setSelectedHero2(hero);
-  };
 
   const comparePowerstats = () => {
     if (selectedHero1 && selectedHero2) {
@@ -69,56 +40,16 @@ function Fight() {
       <div className="fighter-selection">
         <div className="col">
           <h2>Hero 1</h2>
-          <form onSubmit={fetchHeroes1}>
-            <input
-              type="text"
-              placeholder="Search"
-              value={heroName1}
-              onChange={(e) => setHeroName1(e.target.value)}
-            />
-            <button type="submit">Search the Hero</button>
-          </form>
-          <div style={{marginTop: '1rem'}} className='heroesList'>
-            {heroes1 ? heroes1.map((hero) => (
-              <div key={hero.id}>
-                <div 
-                  className={`heroLink ${selectedHero1 && selectedHero1.id === hero.id ? 'selected' : ''}`}
-                  onClick={() => handleHero1Click(hero)}
-                >
-                  <img src={hero.image.url}/> 
-                  <h5>{hero.name}</h5>
-                </div>
-              </div>
-            )): "no heroes found!"}
-          </div>
+          {/* {selectedHero1 && <p>{selectedHero1.name} is selected</p>} */}
+          <Fighter selectedHero={selectedHero1} setSelectedHero={setSelectedHero1} />
         </div>
         <div className="col">
           <h2>Hero 2</h2>
-          <form onSubmit={fetchHeroes2}>
-            <input
-              type="text"
-              placeholder="Search"
-              value={heroName2}
-              onChange={(e) => setHeroName2(e.target.value)}
-            />
-            <button type="submit">Search the Hero</button>
-          </form>
-          <div style={{marginTop: '1rem'}} className='heroesList'>
-            {heroes2 ? heroes2.map((hero) => (
-              <div key={hero.id}>
-                <div 
-                  className={`heroLink ${selectedHero2 && selectedHero2.id === hero.id ? 'selected' : ''}`}
-                  onClick={() => handleHero2Click(hero)}
-                >
-                  <img src={hero.image.url}/> 
-                  <h5>{hero.name}</h5>
-                </div>
-              </div>
-            )): "no heroes found!"}
-          </div>
+          <Fighter selectedHero={selectedHero2} setSelectedHero={setSelectedHero2} />
+          {/* {selectedHero2 && <p>{selectedHero2.name} is selected</p>} */}
         </div>
       </div>
-      <button onClick={comparePowerstats}>Fight!</button>
+      {selectedHero1 && selectedHero2 ? <img src={fightImg} onClick={comparePowerstats}/> : ''}
       {winner && <p>{winner}</p>}
     </>
   );
